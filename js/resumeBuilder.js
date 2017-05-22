@@ -1,4 +1,5 @@
-"use strict";
+(function () {
+    'use strict';
 
 var bio = {
     "name": "Ben Steward",
@@ -30,7 +31,7 @@ var bio = {
             $("#skills").append(HTMLskills.replace("%data%", bio.skills[x]));
             }
         }
-}
+};
 
 var education = {
     "schools": [
@@ -72,7 +73,7 @@ var education = {
             $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.online[e].title).replace("#", education.online[e].url) + HTMLonlineSchool.replace("%data%", education.online[e].school) + HTMLonlineDates.replace("%data%", education.online[e].duration) + HTMLonlineURL.replace("%data%", education.online[e].urlShort).replace("#", education.online[e].url));
         }
     }
-}
+};
 
 var work = {
     "jobs": [
@@ -124,7 +125,7 @@ var work = {
             $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[j].employer).replace("#", work.jobs[j].url) + HTMLworkTitle.replace("%data%", work.jobs[j].title) + HTMLworkDates.replace("%data%", work.jobs[j].duration) + HTMLworkLocation.replace("%data%", work.jobs[j].location) + HTMLworkDescription.replace("%data%", work.jobs[j].description));
         }
     }
-}
+};
 
 var projects = {
     "computer": [
@@ -150,10 +151,12 @@ var projects = {
             $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.computer[p].title).replace("#", projects.computer[p].url) + HTMLprojectDates.replace("%data%", projects.computer[p].dates) + HTMLprojectDescription.replace("%data%", projects.computer[p].description) + HTMLprojectImage.replace("%data%", projects.computer[p].image));
         }
     }
-}
+};
 
 bio.display();
 work.display();
 education.display();
 projects.display();
-$("#mapDiv").append(googleMap);
+$('#mapDiv').append(googleMap);
+
+}());

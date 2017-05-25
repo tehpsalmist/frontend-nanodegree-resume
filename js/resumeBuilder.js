@@ -1,18 +1,17 @@
-(function () {
-    'use strict';
+'use strict';
 
 var bio = {
     "name": "Ben Steward",
     "role": "Web Developer",
-    "contactInfo": {
+    "contacts": {
         "mobile": "267-347-2395",
         "email": "ronyfan102@gmail.com",
         "twitter": "@tehpsalmist",
         "github": "@tehpsalmist",
         "location": "Sellersville, PA"
         },
-    "pic": "images/Profilepic1.jpg",
-    "greeting": "Welcome to my interactive resume. I hope your experience is enjoyable and informative.",
+    "biopic": "images/Profilepic1.jpg",
+    "welcomeMessage": "Welcome to my interactive resume. I hope your experience is enjoyable and informative.",
     "skills": ["MS Office Suite and many other common computer functions",
         "Keyboard Shortcut Ninja",
         "HTML, CSS, and Javascript",
@@ -22,12 +21,10 @@ var bio = {
         ],
     "display": function() {
         $("#header").prepend(HTMLheaderName.replace("%data%", bio.name) + HTMLheaderRole.replace("%data%", bio.role));
-        $("#topContacts").append(HTMLlocation.replace("%data%", bio.contactInfo.location) + HTMLmobile.replace("%data%", bio.contactInfo.mobile) + HTMLemail.replace("%data%", bio.contactInfo.email) + HTMLtwitter.replace("%data%", bio.contactInfo.twitter) + HTMLgithub.replace("%data%", bio.contactInfo.github));
-        $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contactInfo.location) + HTMLmobile.replace("%data%", bio.contactInfo.mobile) + HTMLemail.replace("%data%", bio.contactInfo.email) + HTMLtwitter.replace("%data%", bio.contactInfo.twitter) + HTMLgithub.replace("%data%", bio.contactInfo.github));
-        $("#header").append(HTMLbioPic.replace("%data%", bio.pic) + HTMLwelcomeMsg.replace("%data%", bio.greeting));
+        $("#topContacts, #footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location) + HTMLmobile.replace("%data%", bio.contacts.mobile) + HTMLemail.replace("%data%", bio.contacts.email) + HTMLtwitter.replace("%data%", bio.contacts.twitter) + HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#header").append(HTMLbioPic.replace("%data%", bio.biopic) + HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
         $("#header").append(HTMLskillsStart);
-        var x = 0;
-        for (x = 0; x < bio.skills.length; x++) {
+        for (var x = 0; x < bio.skills.length; x++) {
             $("#skills").append(HTMLskills.replace("%data%", bio.skills[x]));
             }
         }
@@ -37,40 +34,39 @@ var education = {
     "schools": [
         {
             "school": "Upper Bucks Christian School",
-            "duration": "2005-2007",
+            "dates": "2005-2007",
             "degree": "Diploma",
             "location": "Sellersville, PA",
-            "major": "General Education",
+            "majors": ["General Education"],
             "url": "https://www.upperbucks.org"
         },
         {
             "school": "Northland International University",
-            "duration": "2007-2011",
+            "dates": "2007-2011",
             "degree": "Bachelor of Arts",
             "location": "Dunbar, WI",
-            "major": "Biblical Studies",
+            "majors": ["Biblical Studies"],
             "url": "https://en.wikipedia.org/wiki/Northland_International_University"
         }
     ],
-    "online": [
+    "onlineCourses": [
         {
             "title": "Front-End Web Developer Nanodegree",
-            "duration": "April 2017-June 2017",
+            "dates": "April 2017-June 2017",
             "school": "Udacity",
             "urlShort": "udacity.com",
             "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
         }
     ],
     "display": function() {
-        var e = 0;
-        for (e = 0; e < education.schools.length; e++) {
+        for (var e = 0; e < education.schools.length; e++) {
             $("#education").append(HTMLschoolStart);
-            $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[e].school).replace("#", education.schools[e].url) + HTMLschoolDegree.replace("%data%", education.schools[e].degree) + HTMLschoolDates.replace("%data%", education.schools[e].duration) + HTMLschoolLocation.replace("%data%", education.schools[e].location) + HTMLschoolMajor.replace("%data%", education.schools[e].major));
+            $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[e].school).replace("#", education.schools[e].url) + HTMLschoolDegree.replace("%data%", education.schools[e].degree) + HTMLschoolDates.replace("%data%", education.schools[e].dates) + HTMLschoolLocation.replace("%data%", education.schools[e].location) + HTMLschoolMajor.replace("%data%", education.schools[e].majors));
         }
         $("#education").append(HTMLonlineClasses);
-        for (e = 0; e < education.online.length; e++) {
+        for (var e = 0; e < education.onlineCourses.length; e++) {
             $("#education").append(HTMLschoolStart);
-            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.online[e].title).replace("#", education.online[e].url) + HTMLonlineSchool.replace("%data%", education.online[e].school) + HTMLonlineDates.replace("%data%", education.online[e].duration) + HTMLonlineURL.replace("%data%", education.online[e].urlShort).replace("#", education.online[e].url));
+            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[e].title).replace("#", education.onlineCourses[e].url) + HTMLonlineSchool.replace("%data%", education.onlineCourses[e].school) + HTMLonlineDates.replace("%data%", education.onlineCourses[e].dates) + HTMLonlineURL.replace("%data%", education.onlineCourses[e].urlShort).replace("#", education.onlineCourses[e].url));
         }
     }
 };
@@ -80,7 +76,7 @@ var work = {
         {
             "employer": "Faith Christian Academy",
             "title": "Office Manager",
-            "duration": "August 2012-current",
+            "dates": "August 2012-current",
             "location": "Sellersville, PA",
             "description": "I oversaw or executed all tasks related to classroom operations, internal and external communications, supplies, admissions, and management of the student information system (RenWeb).",
             "url": "http://my-fca.com"
@@ -88,7 +84,7 @@ var work = {
         {
             "employer": "XL Sports World",
             "title": "Manager",
-            "duration": "December 2016-current",
+            "dates": "December 2016-current",
             "location": "Hatfield, PA",
             "description": "I am responsible for the security of the building and the money, and I supervise and aid the flex staff in receiving guests at the front desk, preparing surfaces and rooms for each event, cooking and serving food, and cleaning the building.",
             "url": "http://xlhatfield.com"
@@ -96,7 +92,7 @@ var work = {
         {
             "employer": "Chick-fil-A",
             "title": "Manager/Kitchen Crew",
-            "duration": "July 2015-December 2016",
+            "dates": "July 2015-December 2016",
             "location": "Quakertown, PA",
             "description": "My duties in the kitchen involved cooking, assembling, and serving food and cleaning the building. My duties as manager involved organizing the shift, solving more difficult problems for customers, handling the money, and closing all of the operations at night.",
             "url": "http://cfaquakertown.com"
@@ -104,7 +100,7 @@ var work = {
         {
             "employer": "The Intelligencer",
             "title": "Courier",
-            "duration": "January 2013-July 2013",
+            "dates": "January 2013-July 2013",
             "location": "Doylestown, PA",
             "description": "I delivered the morning newspaper by car to about 300 clients 6 days per week.",
             "url": "http://phillyburbs.com/"
@@ -112,7 +108,7 @@ var work = {
         {
             "employer": "McDonald's",
             "title": "Manager",
-            "duration": "November 2011-August 2012",
+            "dates": "November 2011-August 2012",
             "location": "New Britain, PA",
             "description": "I supervised the crew in maintaining food safety, serving delcious food quickly, and making each customer feel important and satisfied.",
             "url": "http://mcdonalds.com"
@@ -122,33 +118,33 @@ var work = {
         var j = 0;
         for (j = 0; j < work.jobs.length; j++) {
             $("#workExperience").append(HTMLworkStart);
-            $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[j].employer).replace("#", work.jobs[j].url) + HTMLworkTitle.replace("%data%", work.jobs[j].title) + HTMLworkDates.replace("%data%", work.jobs[j].duration) + HTMLworkLocation.replace("%data%", work.jobs[j].location) + HTMLworkDescription.replace("%data%", work.jobs[j].description));
+            $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[j].employer).replace("#", work.jobs[j].url) + HTMLworkTitle.replace("%data%", work.jobs[j].title) + HTMLworkDates.replace("%data%", work.jobs[j].dates) + HTMLworkLocation.replace("%data%", work.jobs[j].location) + HTMLworkDescription.replace("%data%", work.jobs[j].description));
         }
     }
 };
 
 var projects = {
-    "computer": [
+    "projects": [
         {
             "title": "FORWARD Conference 2017 Landing Page",
             "dates": "April/May 2017",
             "description": "After completing Udacity's courses on HTML and CSS, I decided to put my month-old knowledge to the test and create a landing page for a conference I was putting together for FCA. I wrote all of the code for the website using Bootstrap 3.3.7.",
-            "image": "images/forward-site.png",
+            "images": ["images/forward-site.png"],
             "url": "http://forwardconference.cf"
         },
         {
             "title": "Report Card Templates",
             "dates": "October 2014",
             "description": "I was dissatisfied with the default templates in our SIS, so I used their customization kit to create new templates using a little bit of HTML and an excel table. It was a great learning experience, and gave me a taste for more serious computer coding. I am currently working on updating the transcript template too, so stay tuned!",
-            "image": "images/report-card.png",
+            "images": ["images/report-card.png"],
             "url": "http://github.com/tehpsalmist/TemplateShowcase"
         }
     ],
     "display": function() {
         var p = 0;
-        for (p = 0; p < projects.computer.length; p++) {
+        for (p = 0; p < projects.projects.length; p++) {
             $("#projects").append(HTMLprojectStart);
-            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.computer[p].title).replace("#", projects.computer[p].url) + HTMLprojectDates.replace("%data%", projects.computer[p].dates) + HTMLprojectDescription.replace("%data%", projects.computer[p].description) + HTMLprojectImage.replace("%data%", projects.computer[p].image));
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[p].title).replace("#", projects.projects[p].url) + HTMLprojectDates.replace("%data%", projects.projects[p].dates) + HTMLprojectDescription.replace("%data%", projects.projects[p].description) + HTMLprojectImage.replace("%data%", projects.projects[p].images));
         }
     }
 };
@@ -158,5 +154,3 @@ work.display();
 education.display();
 projects.display();
 $('#mapDiv').append(googleMap);
-
-}());

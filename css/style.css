@@ -102,12 +102,14 @@ a {
 
 #skills-h3 {
   color: #00b9c8;
-  display: none;
   text-align: center;
 }
 
 #skills {
   line-height: 1.5em;
+  display: block;
+  width: 75%;
+  margin-left: auto;
 }
 
 .orange {
@@ -172,12 +174,22 @@ img {
   padding: 10px;
 }
 
+.img-center {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+}
+
 span {
   padding: 5px;
 }
 
 #lets-connect {
   text-align: center;
+}
+
+.lets-connect {
+  color: #4a4a4a;
 }
 
 /* Media queries to handle various device widths */
@@ -192,6 +204,9 @@ span {
   .biopic {
     width: 175px;
   }
+  .img-center {
+    width: 80%;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -200,11 +215,19 @@ span {
   }
   .biopic {
     width: 150px;
-    float: top;
+    float: none;
+    display: block;
     margin: 0 auto;
   }
   .welcome-message {
     display: none;
+  }
+  #skills {
+    width: 100%;
+  }
+  .white-text {
+    font-size: .8em;
+    line-height: 1em;
   }
 }
 
